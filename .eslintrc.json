@@ -1,6 +1,6 @@
 {
   "env": {
-    "browser": false,
+    "browser": true,
     "es2021": true,
     "node": true
   },
@@ -15,12 +15,19 @@
     "sourceType": "module"
     },
     "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      },
+      "import/resolver": {
+        "typescript": {}
+      },
       "react": {
         "version": "detect"
       }
     },
     "rules": {
       "react/react-in-jsx-scope": "off",
+      "import/no-unresolved": "off",
       "import/order": ["warn", {
         "groups": ["type", "builtin", "object", "external", "internal", "parent", "sibling", "index"],
         "pathGroups": [{
@@ -30,6 +37,14 @@
         }],
         "newlines-between": "always"
       }],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "args": "after-used",
+          "ignoreRestSiblings": false,
+          "argsIgnorePattern": "^_.*?$"
+        }
+      ],
       "react/jsx-sort-props": [
         "warn",
         {
